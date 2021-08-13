@@ -3,11 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace LibrarySystem
 {
@@ -16,6 +11,9 @@ namespace LibrarySystem
         private static SqlConnection sqlConnection;
         public IList<Book> lstBooks = new List<Book>();
         public IList<string> lstFilterGender = new List<string>();
+        private const string SQLDBTYPE_SQLSERVER = "SqlServer";
+        private const string SQLDBTYPE_MYSQL = "MySql";
+
         protected void Page_Load(object sender, EventArgs e)
         {
             lstBooks = GetBooks(txtSearch.Value, cbFilterGender.Value);
@@ -64,6 +62,15 @@ namespace LibrarySystem
 
         public List<string> GetGenders()
         {
+            if (ConfigurationManager.AppSettings["DataBaseType"].ToString().Equals(SQLDBTYPE_SQLSERVER))
+            {
+                
+            }
+            else if (ConfigurationManager.AppSettings["DataBaseType"].ToString().Equals(SQLDBTYPE_MYSQL))
+            {
+
+            }
+
             List<string> lst = new List<string>();
 
             using (SqlConnection myConnection = DbConnection())
