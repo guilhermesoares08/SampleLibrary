@@ -11,8 +11,8 @@ namespace LibrarySystem
         private static SqlConnection sqlConnection;
         public IList<Book> lstBooks = new List<Book>();
         public IList<string> lstFilterGender = new List<string>();
-        private const string SQLDBTYPE_SQLSERVER = "SqlServer";
-        private const string SQLDBTYPE_MYSQL = "MySql";
+        private const string SQLDBTYPE_SQLSERVER = "SQLSERVER";
+        private const string SQLDBTYPE_MYSQL = "MYSQL";
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -62,11 +62,11 @@ namespace LibrarySystem
 
         public List<string> GetGenders()
         {
-            if (ConfigurationManager.AppSettings["DataBaseType"].ToString().Equals(SQLDBTYPE_SQLSERVER))
+            if (ConfigurationManager.AppSettings["DataBaseType"].ToString().ToUpper().Equals(SQLDBTYPE_SQLSERVER))
             {
                 
             }
-            else if (ConfigurationManager.AppSettings["DataBaseType"].ToString().Equals(SQLDBTYPE_MYSQL))
+            else if (ConfigurationManager.AppSettings["DataBaseType"].ToString().ToUpper().Equals(SQLDBTYPE_MYSQL))
             {
 
             }
