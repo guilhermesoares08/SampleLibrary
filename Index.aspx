@@ -27,6 +27,7 @@
                     <th>Id</th>
                     <th>Description</th>
                     <th>Gender</th>
+                    <th>Ações</th>
                 </tr>
                 <% foreach (var item in lstBooks)
                    {%>
@@ -34,6 +35,7 @@
                         <td><%=item.Id %></td>
                         <td><%=item.Description %></td>
                         <td><%=item.Gender %></td>
+                        <td><asp:Button ID="Button1" runat="server" Text="Delete" OnClick="DeleteBook" CommandArgument='<%#Eval("LibrarySystem.Domain.Book.Id") %>' /></td>                        
                     </tr>
                  <%}%>
             </table>

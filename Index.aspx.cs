@@ -2,6 +2,10 @@
 using System;
 using System.Collections.Generic;
 using LibrarySystem.Database;
+using System.Web.UI.WebControls;
+using System.Data;
+using LibrarySystem.BusinessRule;
+using LibrarySystem.Service;
 
 namespace LibrarySystem
 {
@@ -10,16 +14,35 @@ namespace LibrarySystem
         public IList<Book> lstBooks = new List<Book>();
         public IList<string> lstFilterGender = new List<string>();
 
+        BookService _bookService;
+        protected BookService BookService
+        {
+            get
+            {
+                if (_bookService == null)
+                    _bookService = new BookService();
+
+                return _bookService;
+            }
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            lstBooks = SqlServerHelper.GetBooks(txtSearch.Value, cbFilterGender.Value);
+            lstBooks = BookService.GetBookByFilter(txtSearch.Value, cbFilterGender.Value);
             if (!IsPostBack)
             {
-                lstFilterGender = SqlServerHelper.GetGenders();
+                lstFilterGender = _bookService.GetAllGenders();
                 lstFilterGender.Insert(0, "");
                 cbFilterGender.DataSource = lstFilterGender;
                 cbFilterGender.DataBind();
             }
+            
+        }
+
+        protected void DeleteBook(object sender, EventArgs e)
+        {
+            
+            //SqlServerHelper.DeleteBook();
         }
     }
 }
