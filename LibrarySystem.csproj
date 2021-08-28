@@ -159,6 +159,7 @@
     <Compile Include="Database\SqlServerHelper.cs" />
     <Compile Include="Domain\Book.cs" />
     <Compile Include="Helpers\BaseHelper.cs" />
+    <Compile Include="Database\SQLiteHelper.cs" />
     <Compile Include="Index.aspx.cs">
       <DependentUpon>Index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -168,6 +169,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\BookService.cs" />
+    <Compile Include="Utils\Constants.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
