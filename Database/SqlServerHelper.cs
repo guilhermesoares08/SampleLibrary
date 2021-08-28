@@ -1,6 +1,7 @@
 ﻿using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Data.SQLite;
 
 namespace LibrarySystem.Database
 {
@@ -8,13 +9,22 @@ namespace LibrarySystem.Database
     {
         private const string SQLDBTYPE_SQLSERVER = "SQLSERVER";
         private const string SQLDBTYPE_MYSQL = "MYSQL";
+        private const string SQLDBTYPE_SQLite = "SQLITE";
         private static SqlConnection sqlConnection;
-       
+        private static SQLiteConnection sqliteConnection;
+
         private static SqlConnection DbConnection()
         {
             sqlConnection = new SqlConnection("Data Source =.\\sqlexpress; Initial Catalog=Library;Integrated Security=true;Trusted_Connection=true");
             sqlConnection.Open();
             return sqlConnection;
+        }
+
+        private static SQLiteConnection SQLiteConnection()
+        {
+            sqliteConnection = new SQLiteConnection("Data Source = C:\\Users\\gssilva11\\Documents\\sqlite\\Library.db");
+            sqlConnection.Open();
+            return sqliteConnection;
         }
 
         public static string GetDatabaseType()
