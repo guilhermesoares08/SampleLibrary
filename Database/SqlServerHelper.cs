@@ -1,15 +1,14 @@
 ﻿using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Data.SQLite;
 
 namespace LibrarySystem.Database
 {
     public static class SqlServerHelper
-    {
-        private const string SQLDBTYPE_SQLSERVER = "SQLSERVER";
-        private const string SQLDBTYPE_MYSQL = "MYSQL";
+    {        
         private static SqlConnection sqlConnection;
-       
+
         private static SqlConnection DbConnection()
         {
             sqlConnection = new SqlConnection("Data Source =.\\sqlexpress; Initial Catalog=Library;Integrated Security=true;Trusted_Connection=true");
