@@ -18,11 +18,11 @@ namespace LibrarySystem.Service
             }
         }
 
-        public IList<Book> GetAllBooks()
+        public IList<Domain.Book> GetAllBooks()
         {
             return BookDataAccess.GetAllBooks();
         }
-        public IList<Book> GetBookByFilter(string searchText, string gender)
+        public IList<Domain.Book> GetBookByFilter(string searchText, string gender)
         {
             return BookDataAccess.GetBookByFilter(searchText, gender);
         }

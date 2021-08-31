@@ -7,7 +7,7 @@ namespace LibrarySystem
 {
     public partial class Index : System.Web.UI.Page
     {
-        public IList<Book> lstBooks = new List<Book>();
+        public IList<Domain.Book> lstBooks = new List<Domain.Book>();
         public IList<string> lstFilterGender = new List<string>();
 
         BookService _bookService;
@@ -21,24 +21,37 @@ namespace LibrarySystem
                 return _bookService;
             }
         }
-
         protected void Page_Load(object sender, EventArgs e)
         {
-            lstBooks = BookService.GetBookByFilter(txtSearch.Value, cbFilterGender.Value);
+            int q = 0;
+            decimal p1 = 4M;
+            decimal p2 = 5M;
+
+            List<Domain.Book> lst = new List<Domain.Book>();
+            lst.Add(new Domain.Book() { Id = 1, Description = "l1" });
+            lst.Add(new Domain.Book() { Id = 2, Description = "l2" });
+            lst.Add(new Domain.Book() { Id = 3, Description = "l3" });
+
+            foreach (Domain.Book joirAbi in lst)
+            {
+                if (joirAbi.Description.Equals("l2"))
+                {
+                    Console.WriteLine("digite o nome novo");
+                    joirAbi.Description = Console.ReadLine();
+
+                }
+            }
+
+
+            
+            //lstBooks = BookService.GetBookByFilter(txtSearch.Value, cbFilterGender.Value);
             if (!IsPostBack)
             {
-                lstFilterGender = _bookService.GetAllGenders();
-                lstFilterGender.Insert(0, "");
+                lstFilterGender = BookService.GetAllGenders();
+                lstFilterGender.Insert(0, "Gênero");
                 cbFilterGender.DataSource = lstFilterGender;
                 cbFilterGender.DataBind();
             }
-            
-        }
-
-        protected void DeleteBook(object sender, EventArgs e)
-        {
-            
-            //SqlServerHelper.DeleteBook();
         }
     }
 }

@@ -9,11 +9,11 @@ namespace LibrarySystem.DataAccess
 {
     public class BookDataAccess
     {
-        public IList<Book> GetAllBooks()
+        public IList<Domain.Book> GetAllBooks()
         {
             DataTable dt = null;
             string queryCommand = "SELECT * FROM Book";
-            IList<Book> lst = new List<Book>();
+            IList<Domain.Book> lst = new List<Domain.Book>();
 
             if (BaseHelper.GetDataBaseType().Equals(Constants.SQLDBTYPE_SQLSERVER))
             {
@@ -28,7 +28,7 @@ namespace LibrarySystem.DataAccess
             {
                 foreach (DataRow dr in dt.Rows)
                 {
-                    Book b = FillBookInfoByDataRow(dr);
+                    Domain.Book b = FillBookInfoByDataRow(dr);
 
                     lst.Add(b);
                 }
@@ -36,7 +36,7 @@ namespace LibrarySystem.DataAccess
 
             return lst;
         }
-        public IList<Book> GetBookByFilter(string searchText, string gender)
+        public IList<Domain.Book> GetBookByFilter(string searchText, string gender)
         {
             string filterGender = "";
             DataTable dt = null;
@@ -57,13 +57,13 @@ namespace LibrarySystem.DataAccess
                 dt = SQLiteHelper.ExecuteSQLiteCommand(queryCommand);
             }
 
-            IList<Book> lst = new List<Book>();
+            IList<Domain.Book> lst = new List<Domain.Book>();
 
             if (dt != null && dt.Rows != null && dt.Rows.Count > 0)
             {
                 foreach (DataRow dr in dt.Rows)
                 {
-                    Book b = FillBookInfoByDataRow(dr);
+                    Domain.Book b = FillBookInfoByDataRow(dr);
 
                     lst.Add(b);
                 }
@@ -71,9 +71,9 @@ namespace LibrarySystem.DataAccess
 
             return lst;
         }
-        private Book FillBookInfoByDataRow(DataRow dr)
+        private Domain.Book FillBookInfoByDataRow(DataRow dr)
         {
-            return new Book()
+            return new Domain.Book()
             {
                 Id = int.Parse(dr["Id"].ToString()),
                 Description = dr["Description"].ToString(),
