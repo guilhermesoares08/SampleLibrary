@@ -1,4 +1,5 @@
-﻿using System.Configuration;
+﻿using LibrarySystem.Helpers;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Data.SQLite;
@@ -6,19 +7,15 @@ using System.Data.SQLite;
 namespace LibrarySystem.Database
 {
     public static class SqlServerHelper
-    {        
+    {
+        
         private static SqlConnection sqlConnection;
 
         private static SqlConnection DbConnection()
         {
-            sqlConnection = new SqlConnection("Data Source =.\\sqlexpress; Initial Catalog=Library;Integrated Security=true;Trusted_Connection=true");
+            sqlConnection = new SqlConnection(BaseHelper.GetSqlServerConnectionString());
             sqlConnection.Open();
             return sqlConnection;
-        }
-
-        public static string GetDatabaseType()
-        {
-            return ConfigurationManager.AppSettings["DataBaseType"].ToString().ToUpper();
         }
 
         public static void ExecuteSqlScript(string sql)

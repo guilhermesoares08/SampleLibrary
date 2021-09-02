@@ -1,4 +1,4 @@
-﻿using System.Configuration;
+﻿using LibrarySystem.Helpers;
 using System.Data;
 using System.Data.SQLite;
 
@@ -10,7 +10,7 @@ namespace LibrarySystem.Database
 
         private static SQLiteConnection DbConnection()
         {
-            sQLiteConnection = new SQLiteConnection("Data Source = C:\\Users\\gssilva11\\Documents\\sqlite\\Library.db");
+            sQLiteConnection = new SQLiteConnection(BaseHelper.GetSQLiteConnectionString());
             sQLiteConnection.Open();
             return sQLiteConnection;
         }
