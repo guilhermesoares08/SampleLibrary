@@ -1902,7 +1902,9 @@
     <Compile Include="Service\BookService.cs" />
     <Compile Include="Utils\Constants.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="UtilsFiles\" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Style\bootstrap-5.1.0\.browserslistrc" />
