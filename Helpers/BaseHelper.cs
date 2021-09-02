@@ -13,5 +13,15 @@ namespace LibrarySystem.Helpers
             string dataBaseConfig = ConfigurationManager.AppSettings["DataBaseType"].ToString();
             return dataBaseConfig;
         }
+
+        public static string GetSqlServerConnectionString()
+        {
+            return ConfigurationManager.ConnectionStrings["LibrarySqlServerConnectionString"].ConnectionString;
+        }
+
+        public static string GetSQLiteConnectionString()
+        {
+            return ConfigurationManager.ConnectionStrings["LibrarySQLiteConnectionString"].ConnectionString;
+        }
     }
 }
