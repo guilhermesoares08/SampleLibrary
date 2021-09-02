@@ -150,7 +150,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Book\Search.aspx" />
-    <Content Include="Book\WebForm1.aspx" />
     <Content Include="Index.aspx" />
     <Content Include="Style\bootstrap-5.1.0\.babelrc.js" />
     <Content Include="Style\bootstrap-5.1.0\.gitattributes" />
@@ -1885,13 +1884,6 @@
     </Compile>
     <Compile Include="Book\Search.aspx.designer.cs">
       <DependentUpon>Search.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Book\WebForm1.aspx.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Book\WebForm1.aspx.designer.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
     <Compile Include="BusinessRule\BookBusinessRule.cs" />
     <Compile Include="DataAccess\BookDataAccess.cs" />
