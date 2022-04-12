@@ -1,16 +1,18 @@
-﻿using System.Configuration;
+﻿using LibrarySystem.Helpers;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 
 namespace LibrarySystem.Database
 {
     public static class SqlServerHelper
-    {        
+    {
+        
         private static SqlConnection sqlConnection;
 
         private static SqlConnection DbConnection()
         {
-            sqlConnection = new SqlConnection("Data Source =.\\sqlexpress; Initial Catalog=Library;Integrated Security=true;Trusted_Connection=true");
+            sqlConnection = new SqlConnection(BaseHelper.GetSqlServerConnectionString());
             sqlConnection.Open();
             return sqlConnection;
         }
