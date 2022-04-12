@@ -1887,6 +1887,7 @@
     </Compile>
     <Compile Include="BusinessRule\BookBusinessRule.cs" />
     <Compile Include="DataAccess\BookDataAccess.cs" />
+    <Compile Include="DataAccess\IBookDataAccess.cs" />
     <Compile Include="Database\SqlServerHelper.cs" />
     <Compile Include="Domain\Book.cs" />
     <Compile Include="Helpers\BaseHelper.cs" />
