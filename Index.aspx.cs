@@ -11,6 +11,7 @@ namespace LibrarySystem
         public IList<string> lstFilterGender = new List<string>();
 
         BookService _bookService;
+        
         protected BookService BookService
         {
             get
@@ -27,7 +28,7 @@ namespace LibrarySystem
             lstBooks = BookService.GetBookByFilter(txtSearch.Value, cbFilterGender.Value);
             if (!IsPostBack)
             {
-                lstFilterGender = _bookService.GetAllGenders();
+                lstFilterGender = BookService.GetAllGenders();
                 lstFilterGender.Insert(0, "");
                 cbFilterGender.DataSource = lstFilterGender;
                 cbFilterGender.DataBind();

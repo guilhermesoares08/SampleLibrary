@@ -6,8 +6,8 @@ namespace LibrarySystem.BusinessRule
 {
     public class BookBusinessRule
     {
-        BookDataAccess _bookDataAccess;
-        protected BookDataAccess BookDataAccess
+        IBookDataAccess _bookDataAccess;
+        protected IBookDataAccess BookDataAccess
         {
             get
             {

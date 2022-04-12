@@ -1,7 +1,6 @@
 ﻿using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Data.SQLite;
 
 namespace LibrarySystem.Database
 {
@@ -14,11 +13,6 @@ namespace LibrarySystem.Database
             sqlConnection = new SqlConnection("Data Source =.\\sqlexpress; Initial Catalog=Library;Integrated Security=true;Trusted_Connection=true");
             sqlConnection.Open();
             return sqlConnection;
-        }
-
-        public static string GetDatabaseType()
-        {
-            return ConfigurationManager.AppSettings["DataBaseType"].ToString().ToUpper();
         }
 
         public static void ExecuteSqlScript(string sql)

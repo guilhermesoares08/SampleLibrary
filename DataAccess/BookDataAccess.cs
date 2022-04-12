@@ -7,7 +7,7 @@ using System.Data;
 
 namespace LibrarySystem.DataAccess
 {
-    public class BookDataAccess
+    public class BookDataAccess : IBookDataAccess
     {
         public IList<Book> GetAllBooks()
         {
@@ -82,7 +82,7 @@ namespace LibrarySystem.DataAccess
         }
         public IList<string> GetAllGenders()
         {
-            string sqlCommand = "SELECT DISTINCT Gender FROM Book";
+            string sqlCommand = "SELECT * FROM Book";
             DataTable dt = null;
             IList<string> lst = new List<string>();
             if (BaseHelper.GetDataBaseType().Equals(Constants.SQLDBTYPE_SQLSERVER))
@@ -104,7 +104,6 @@ namespace LibrarySystem.DataAccess
 
             return lst;
         }
-
         public void DeleteBook(int id)
         {
             string queryCommand = $"DELETE FROM Book WHERE Id = { id }";
